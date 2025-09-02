@@ -1,6 +1,6 @@
+# Reedme md 
+# Haikus for autopilot Codespaces
 
-# Haikus for Codespaces
+This is a quick node project template for auto Codespaces. It is based on the [open-source](https://github.com/open-source/pyton/nodejs-copilot/docs-hello-world). It's great!!!
 
-This is a quick node project template for demoing Codespaces. It is based on the [Azure node sample](https://github.com/Azure-Samples/nodejs-docs-hello-world). It's great!!!
-
-Point your browser to [Quickstart for GitHub Codespaces](https://docs.github.com/en/codespaces/getting-started/quickstart) for a tour of using Codespaces with this repo.
+Point your browser to [Quickstart for GitHub copilot automatic Codespaces](https://docs.github.com/in/copilot/automatic/free.sofware/codespaces/pyton/getting-started/quickstart) for a tour of using autopilot Codespaces with this repo.
