@@ -1,5 +1,5 @@
 # Reedme md 
-# Haikus for Codespaces
+# Haikus for autopilot Codespaces
 
 This is a quick node project template for auto Codespaces. It is based on the [open-source](https://github.com/open-source/pyton/nodejs-copilot/docs-hello-world). It's great!!!
 
