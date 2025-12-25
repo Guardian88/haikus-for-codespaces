@@ -1,0 +1,574 @@
+# AI Configuration File - Unified Command Settings
+# Repository: haikus-for-codespaces
+# Created: 2025-12-25T03:17:22Z
+# Author: Guardian88
+
+# ============================================================================
+# CORE AI CONFIGURATION
+# ============================================================================
+
+core:
+  # AI Model Configuration
+  model:
+    provider: "openai"  # Provider: openai, anthropic, azure, local
+    version: "gpt-4-turbo"
+    temperature: 0.7  # 0.0-1.0: Lower = deterministic, Higher = creative
+    max_tokens: 2048
+    top_p: 0.9
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+    timeout_seconds: 30
+
+  # System Behavior
+  behavior:
+    enable_caching: true
+    cache_ttl_seconds: 3600
+    enable_streaming: true
+    enable_retry: true
+    max_retries: 3
+    retry_delay_seconds: 2
+    enable_logging: true
+    log_level: "info"  # debug, info, warn, error
+
+  # Context Management
+  context:
+    max_history_messages: 20
+    memory_type: "persistent"  # persistent, session, ephemeral
+    enable_summarization: true
+    summary_trigger_tokens: 4000
+
+# ============================================================================
+# UNIFIED COMMAND SETTINGS
+# ============================================================================
+
+commands:
+  # Command Execution Policy
+  execution:
+    enable_execution: true
+    sandbox_mode: true  # Run commands in isolated environment
+    timeout_seconds: 60
+    max_concurrent_commands: 3
+    require_confirmation: false  # Prompt user for dangerous operations
+    log_executed_commands: true
+
+  # Built-in Command Categories
+  categories:
+    code:
+      enabled: true
+      description: "Code generation, refactoring, and analysis"
+      capabilities: ["generate", "refactor", "analyze", "test", "document"]
+
+    documentation:
+      enabled: true
+      description: "Documentation generation and management"
+      capabilities: ["generate", "update", "translate", "review"]
+
+    git:
+      enabled: true
+      description: "Git operations and version control"
+      capabilities: ["commit", "branch", "merge", "review"]
+
+    development:
+      enabled: true
+      description: "Development workflow automation"
+      capabilities: ["test", "build", "deploy", "debug"]
+
+    security:
+      enabled: true
+      description: "Security analysis and vulnerability scanning"
+      capabilities: ["scan", "analyze", "report", "remediate"]
+
+    performance:
+      enabled: true
+      description: "Performance monitoring and optimization"
+      capabilities: ["profile", "optimize", "monitor", "report"]
+
+  # Custom Command Aliases
+  aliases:
+    explain: "analyze --detail=high"
+    quick-review: "analyze --detail=low --time=1"
+    full-test: "test --coverage --verbose"
+    git-auto: "git --auto-commit --message-generation"
+    doc-all: "documentation --generate --all"
+
+  # Command Shortcuts
+  shortcuts:
+    "?": "help"
+    "!": "execute"
+    "@": "mention-context"
+    "#": "reference-code"
+    "$": "execute-shell"
+
+# ============================================================================
+# VOICE CONFIGURATION
+# ============================================================================
+
+voice:
+  # Voice Input Settings
+  input:
+    enabled: true
+    provider: "google-speech-to-text"  # google, azure, aws, local
+    language: "en-US"
+    sample_rate: 16000
+    channels: 1
+    encoding: "LINEAR16"
+    enable_noise_cancellation: true
+    confidence_threshold: 0.85
+    timeout_seconds: 30
+
+  # Voice Output Settings (Text-to-Speech)
+  output:
+    enabled: true
+    provider: "google-text-to-speech"  # google, azure, aws, local
+    language: "en-US"
+    voice_name: "en-US-Neural2-C"
+    gender: "female"  # male, female, neutral
+    speaking_rate: 1.0  # 0.25-4.0
+    pitch: 0.0  # -20 to 20
+    volume_gain_db: 0.0
+    sample_rate_hz: 24000
+    audio_format: "mp3"
+    enable_ssml_support: true
+
+  # Voice Command Processing
+  commands:
+    enable_voice_commands: true
+    enable_voice_feedback: true
+    enable_confirmation_prompts: true
+    voice_command_timeout_seconds: 10
+    voice_silence_timeout_seconds: 3
+    enable_natural_language_understanding: true
+
+  # Voice Interaction Modes
+  modes:
+    interactive:
+      enabled: true
+      description: "Real-time two-way voice conversation"
+      auto_response: true
+
+    command:
+      enabled: true
+      description: "Voice commands for specific actions"
+      auto_response: false
+
+    dictation:
+      enabled: true
+      description: "Voice-to-text content creation"
+      auto_response: false
+
+    accessibility:
+      enabled: true
+      description: "Accessibility features for voice interaction"
+      auto_response: true
+
+  # Voice Quality Settings
+  quality:
+    noise_suppression_level: "high"  # low, medium, high
+    echo_cancellation: true
+    auto_gain_control: true
+    voice_activity_detection: true
+    enable_audio_enhancement: true
+
+# ============================================================================
+# MULTI-LANGUAGE SUPPORT
+# ============================================================================
+
+languages:
+  # Default Language Settings
+  default:
+    language_code: "en-US"
+    region: "US"
+    charset: "UTF-8"
+    date_format: "YYYY-MM-DD"
+    time_format: "HH:mm:ss"
+    timezone: "UTC"
+
+  # Supported Languages
+  supported:
+    - code: "en-US"
+      name: "English (United States)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["en-US-Neural2-A", "en-US-Neural2-C", "en-US-Neural2-E"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "en-GB"
+      name: "English (United Kingdom)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["en-GB-Neural2-A", "en-GB-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "es-ES"
+      name: "Spanish (Spain)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["es-ES-Neural2-A", "es-ES-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "fr-FR"
+      name: "French (France)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["fr-FR-Neural2-A", "fr-FR-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "de-DE"
+      name: "German (Germany)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["de-DE-Neural2-A", "de-DE-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "it-IT"
+      name: "Italian (Italy)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["it-IT-Neural2-A"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "pt-BR"
+      name: "Portuguese (Brazil)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["pt-BR-Neural2-A", "pt-BR-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "pt-PT"
+      name: "Portuguese (Portugal)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["pt-PT-Neural2-A"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "ja-JP"
+      name: "Japanese (Japan)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["ja-JP-Neural2-A", "ja-JP-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "zh-CN"
+      name: "Chinese Simplified (China)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["zh-CN-Neural2-A", "zh-CN-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "zh-TW"
+      name: "Chinese Traditional (Taiwan)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["zh-TW-Neural2-A"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "ko-KR"
+      name: "Korean (South Korea)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["ko-KR-Neural2-A", "ko-KR-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "ru-RU"
+      name: "Russian (Russia)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["ru-RU-Neural2-A", "ru-RU-Neural2-B"]
+      speech_recognition: true
+      natural_language_processing: true
+
+    - code: "hi-IN"
+      name: "Hindi (India)"
+      enabled: true
+      voice_support: true
+      tts_voices: ["hi-IN-Neural2-A"]
+      speech_recognition: true
+      natural_language_processing: true
+
+  # Language Detection
+  detection:
+    enable_auto_detection: true
+    detection_provider: "textrank"  # textrank, langdetect, fasttext
+    confidence_threshold: 0.7
+    fallback_language: "en-US"
+
+  # Translation Settings
+  translation:
+    enable_translation: true
+    provider: "google-translate"  # google, microsoft, deepl, aws
+    auto_translate_threshold: 0.5  # Translate if confidence below this
+    preserve_formatting: true
+    enable_context_preservation: true
+    enable_terminology_preservation: true
+
+  # Localization
+  localization:
+    enable_locale_specific_formatting: true
+    enable_cultural_adaptation: true
+    currency_conversion: true
+    timezone_handling: "auto"  # auto, manual, user-preference
+    metric_system: "auto"  # metric, imperial, auto-detect
+
+  # Language-Specific Rules
+  rules:
+    rtl_languages: ["ar-SA", "he-IL"]  # Right-to-left languages
+    tonal_languages: ["zh-CN", "zh-TW", "vi-VN", "th-TH"]
+    case_sensitive_languages: ["en-US", "es-ES", "fr-FR"]
+    space_sensitive_languages: ["zh-CN", "zh-TW", "ja-JP"]
+
+# ============================================================================
+# SECURITY AND PRIVACY
+# ============================================================================
+
+security:
+  # Authentication
+  authentication:
+    enable_api_key_validation: true
+    api_key_rotation_days: 90
+    enable_oauth2: true
+    enable_saml: false
+
+  # Data Protection
+  data_protection:
+    enable_encryption: true
+    encryption_algorithm: "AES-256"
+    enable_data_anonymization: true
+    enable_pii_detection: true
+    pii_masking_enabled: true
+
+  # Privacy
+  privacy:
+    enable_privacy_mode: false
+    disable_data_collection: false
+    disable_analytics: false
+    gdpr_compliant: true
+    ccpa_compliant: true
+    data_retention_days: 90
+
+  # Audit and Logging
+  audit:
+    enable_audit_logging: true
+    log_all_commands: true
+    log_all_responses: true
+    audit_log_retention_days: 365
+    enable_change_tracking: true
+
+# ============================================================================
+# INTEGRATION SETTINGS
+# ============================================================================
+
+integrations:
+  # IDE Integration
+  ide:
+    vscode:
+      enabled: true
+      extension_id: "guardian88.ai-haikus"
+      auto_suggest: true
+      inline_suggestions: true
+
+    jetbrains:
+      enabled: true
+      plugin_id: "com.guardian88.ai-haikus"
+      auto_suggest: true
+
+  # Platform Integration
+  platforms:
+    github:
+      enabled: true
+      api_version: "v3"
+      enable_pr_automation: true
+      enable_issue_automation: true
+
+    gitlab:
+      enabled: false
+      api_version: "v4"
+
+    azure_devops:
+      enabled: false
+      api_version: "7.0"
+
+  # Communication
+  communication:
+    slack:
+      enabled: true
+      webhook_integration: true
+      notifications: true
+
+    teams:
+      enabled: false
+      webhook_integration: false
+
+    discord:
+      enabled: false
+      bot_integration: false
+
+# ============================================================================
+# PERFORMANCE AND OPTIMIZATION
+# ============================================================================
+
+performance:
+  # Resource Management
+  resources:
+    max_memory_mb: 1024
+    max_cpu_percent: 80
+    enable_auto_scaling: true
+    enable_load_balancing: true
+
+  # Caching Strategy
+  caching:
+    enable_response_caching: true
+    cache_provider: "redis"  # redis, memcached, local
+    cache_ttl_seconds: 3600
+    enable_compression: true
+
+  # Rate Limiting
+  rate_limiting:
+    enable_rate_limiting: true
+    requests_per_minute: 60
+    requests_per_hour: 3600
+    enable_burst_allowance: true
+
+  # Optimization
+  optimization:
+    enable_lazy_loading: true
+    enable_prefetching: true
+    enable_query_optimization: true
+    enable_batch_processing: true
+
+# ============================================================================
+# MONITORING AND ALERTS
+# ============================================================================
+
+monitoring:
+  # Metrics Collection
+  metrics:
+    enable_metrics_collection: true
+    metrics_provider: "prometheus"
+    collection_interval_seconds: 60
+    retention_days: 30
+
+  # Health Checks
+  health_checks:
+    enable_health_checks: true
+    health_check_interval_seconds: 300
+    health_check_timeout_seconds: 10
+    enable_auto_healing: true
+
+  # Alerting
+  alerting:
+    enable_alerting: true
+    alert_provider: "pagerduty"  # pagerduty, datadog, custom
+    alert_severity_threshold: "warning"  # info, warning, error, critical
+    enable_notifications: true
+    notification_channels: ["email", "slack"]
+
+# ============================================================================
+# ADVANCED FEATURES
+# ============================================================================
+
+advanced:
+  # Machine Learning
+  machine_learning:
+    enable_ml_features: true
+    enable_continuous_learning: true
+    enable_feedback_learning: true
+    learning_model_update_frequency: "weekly"
+
+  # Custom Plugins
+  plugins:
+    enable_plugins: true
+    plugin_directory: ".ai/plugins"
+    enable_plugin_auto_loading: true
+    enable_plugin_sandboxing: true
+
+  # Experimentation
+  experimentation:
+    enable_ab_testing: false
+    enable_feature_flags: true
+    enable_beta_features: false
+
+  # Analytics
+  analytics:
+    enable_analytics: true
+    analytics_provider: "custom"
+    track_usage_patterns: true
+    track_command_frequency: true
+    track_language_distribution: true
+
+# ============================================================================
+# DEVELOPMENT AND DEBUGGING
+# ============================================================================
+
+development:
+  # Debug Mode
+  debug:
+    enable_debug_mode: false
+    debug_log_level: "debug"
+    enable_stack_traces: true
+    enable_breakpoints: false
+
+  # Testing
+  testing:
+    enable_test_mode: false
+    test_provider: "pytest"
+    enable_coverage_reporting: true
+    coverage_threshold_percent: 80
+
+  # Environment
+  environment:
+    environment_type: "production"  # development, staging, production
+    enable_hot_reload: false
+    enable_experimental_features: false
+
+# ============================================================================
+# DEPLOYMENT SETTINGS
+# ============================================================================
+
+deployment:
+  # Build Settings
+  build:
+    enable_auto_build: true
+    build_trigger: "push"  # push, schedule, manual
+    build_timeout_seconds: 600
+
+  # Deployment
+  deployment:
+    enable_auto_deployment: false
+    deployment_environment: "staging"
+    enable_canary_deployment: false
+    enable_blue_green_deployment: false
+
+  # Rollback
+  rollback:
+    enable_auto_rollback: true
+    rollback_on_error: true
+    rollback_grace_period_seconds: 300
+
+# ============================================================================
+# CONFIGURATION METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0.0"
+  created_at: "2025-12-25T03:17:22Z"
+  modified_at: "2025-12-25T03:17:22Z"
+  created_by: "Guardian88"
+  description: "Comprehensive AI unified command settings with voice configuration and multi-language support"
+  tags:
+    - "ai-configuration"
+    - "unified-commands"
+    - "voice-enabled"
+    - "multi-language"
+    - "haikus-for-codespaces"
